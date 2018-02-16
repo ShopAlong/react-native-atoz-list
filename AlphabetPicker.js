@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, PanResponder } from 'react-native';
+import { View, Text, PanResponder, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 class LetterPicker extends Component {
 
     render() {
         return (
-            <Text style={{ fontSize: 11, fontWeight: 'bold' }}>
-                {this.props.letter}
-            </Text>
+            <TouchableOpacity onPress={() => this.props.onTouchLetter(this.props.letter)}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                    {this.props.letter}
+                </Text>
+            </TouchableOpacity>
         );
     }
 }
@@ -79,7 +81,7 @@ export default class AlphabetPicker extends Component {
     render() {
         const {alphabet} = this.state
         this._letters = (
-            alphabet.map((letter) => <LetterPicker letter={letter} key={letter} />)
+            alphabet.map((letter) => <LetterPicker letter={letter} key={letter} onTouchLetter={(letter) => this._onTouchLetter(letter)}/>)
         );
 
         return (
