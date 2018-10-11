@@ -6,8 +6,8 @@ class LetterPicker extends Component {
 
     render() {
         return (
-            <TouchableOpacity onPress={() => this.props.onTouchLetter(this.props.letter)}>
-                <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+            <TouchableOpacity  style={{paddingVertical:2.5}} onPress={() => this.props.onTouchLetter(this.props.letter)}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', fontWeight:'500' }}>
                     {this.props.letter}
                 </Text>
             </TouchableOpacity>
