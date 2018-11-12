@@ -19,6 +19,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Platform,
+  Dimensions
 } from 'react-native';
 
 import _ from 'lodash';
@@ -71,6 +72,7 @@ export default class AtoZList extends Component {
 
 
   render() {
+    console.log(this.props)
     this._alphabetInstance = (
       <View style={styles.alphabetSidebar}>
         <AlphabetPicker alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} />
@@ -79,7 +81,7 @@ export default class AtoZList extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <View style={styles.container}>
+        <View style={[styles.container, this.props.style]}>
           <FixedHeightWindowedListView
             ref={view => this._listView = view}
             dataSource={this.state.dataSource}
@@ -109,9 +111,9 @@ export default class AtoZList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 0,
     backgroundColor: '#fff',
+    height : '90%'
   },
   alphabetSidebar: {
     position: 'absolute',
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center',height : '90%'
   },
 });
 
